@@ -12,3 +12,7 @@ The Odin Project - Todo List
 - JavaScript
 - HTML
 - CSS
+
+## Assets & external code
+
+- [Normalize.css v8.0.1](https://necolas.github.io/normalize.css/)
