@@ -31,6 +31,9 @@
 
   /* gradient */
   --grad-text: linear-gradient(30deg, var(--accent-light), var(--accent-dark));
+  --grad-btn-add: linear-gradient(30deg, var(--accent-light), var(--accent-dark));
+  --grad-btn-close: linear-gradient(30deg, rgb(204, 7, 7), rgb(177, 107, 132));
+
   --grad-pri-bg: repeating-linear-gradient(
       135deg,
       hsla(64, 83%, 54%, 0.05) 0px,
@@ -130,6 +133,10 @@ ul {
   padding-left: 0;
 }
 
+ul li {
+  list-style: none;
+}
+
 /* Scroll bar
    ========================================================================== */
 /* width */
@@ -184,7 +191,7 @@ ul {
 
 .pri-nav {
   background-color: var(--dark-0);
-  height: 100vh;
+  min-height: 100vh;
   min-width: 100%;
   overflow: auto;
   position: absolute;
@@ -238,6 +245,62 @@ ul {
     'greet greet';
 }
 
+/* Modal
+   ========================================================================= */
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: grid;
+  place-content: center;
+  background-color: var(--dark-0);
+}
+
+.formV01 {
+  background-color: var(--dark-0);
+  padding: var(--pri-padding);
+  border-radius: var(--size-1);
+  border: 1px solid var(--light-0);
+}
+
+.formV01-heading {
+  font-family: var(--pri-font);
+}
+
+.formV01 li {
+  display: grid;
+  gap: var(--size-0);
+}
+
+.formV01-btn {
+  background-color: var(--dark-0);
+  border-radius: var(--size-0);
+  border: 1px solid var(--light-0);
+  color: var(--light-0);
+  cursor: pointer;
+  font-family: var(--pri-font);
+  font-weight: 900;
+}
+
+.formV01 input[type='radio'] {
+  display: inline-block;
+}
+
+.formV01-btn-add {
+  background-image: var(--grad-btn-add);
+}
+
+.formV01-btn-close {
+  background-image: var(--grad-btn-close);
+}
+
+.btn-container {
+  grid-template-columns: 1fr 1fr;
+}
+
 /* Button & Icons
    ========================================================================= */
 .iconV01 {
@@ -249,7 +312,6 @@ ul {
 }
 
 .buttonV02 {
-  list-style: none;
   cursor: pointer;
   border-radius: var(--size-0);
   padding: calc(var(--pri-padding) / 2);
@@ -261,6 +323,10 @@ ul {
 .buttonV02:is(:hover) {
   background-color: var(--accent-light);
   color: var(--dark-0);
+}
+
+.fa-trash:is(:hover) {
+  color: var(--light-0);
 }
 
 /* Utility class
@@ -278,6 +344,10 @@ ul {
   background-clip: text;
   background-image: var(--grad-text);
   color: transparent;
+}
+
+.margin-reset {
+  margin: 0;
 }
 
 /* Large screens
@@ -316,13 +386,16 @@ ul {
     grid-template-areas:
       'head main'
       'nav main'
-      'nav main'
       'foot foot';
   }
 
   .buttonV02 {
     padding: calc(var(--pri-padding) / 4);
     border-color: transparent;
+  }
+
+  .modal {
+    background-color: transparent;
   }
 
   .sticky-hero {
