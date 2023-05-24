@@ -43,10 +43,24 @@ function openAddProject(modalContainer, modal) {
     // add project to project list
     ProjectList.addProject(new Project(txtProjectName.value));
 
+    // render project list
+    renderProjectList();
+
     // reset & close modal
     modal.reset();
     toggleModal(modalContainer);
   };
+}
+
+function renderProjectList() {
+  const projectListEl = document.querySelector('.project-list');
+  let list = '';
+
+  ProjectList._projectList.forEach((project) => {
+    list += `<li class= "buttonV01 buttonV02"><i class="fa-sharp fa-solid fa-trash"></i> <i class="fa-solid fa-list-check" aria-hidden="true"></i> ${project.name}</li>`;
+  });
+
+  projectListEl.innerHTML = list;
 }
 
 function toggleModal(modalContainer) {
