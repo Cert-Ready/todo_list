@@ -1,5 +1,5 @@
 export default function navToggle() {
-	const navIcon = document.querySelector('.nav-menu .fa-solid');
+	const navIcon = document.querySelector('.pri-nav-icon');
 	const priNav = document.querySelector('.pri-nav');
 
 	navIcon.addEventListener('click', () => {
