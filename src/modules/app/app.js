@@ -26,8 +26,27 @@ export function app() {
 }
 
 function openAddProject(modalContainer, modal) {
+  const btnAdd = document.querySelector('.add-project-submit-btn ');
+  const txtProjectName = document.querySelector('#project-title');
+
   // display modal
   toggleModal(modalContainer);
+
+  // create project from modal fields
+  btnAdd.onclick = () => {
+    // check for empty fields
+    if (txtProjectName.value === '') {
+      alert('Error please enter project name');
+      return;
+    }
+
+    // add project to project list
+    ProjectList.addProject(new Project(txtProjectName.value));
+
+    // reset & close modal
+    modal.reset();
+    toggleModal(modalContainer);
+  };
 }
 
 function toggleModal(modalContainer) {
