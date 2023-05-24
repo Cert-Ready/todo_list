@@ -17,3 +17,4 @@ The Odin Project - Todo List
 
 - [Normalize.css v8.0.1](https://necolas.github.io/normalize.css/)
 - [Fonts](https://fonts.google.com/)
+- [Icons](https://fontawesome.com/)
