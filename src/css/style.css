@@ -9,4 +9,190 @@
 	/* font */
 	--pri-font: 'Nunito', sans-serif;
 	--sec-font: 'PT Sans', sans-serif;
+
+	/* size */
+	--size-0: 0.5rem;
+	--size-1: 1rem;
+	--size-2: 2rem;
+	--size-3: 3rem;
+	--size-4: 4rem;
+	--size-5: 5rem;
+	--size-6: 6rem;
+	--size-7: 7rem;
+	--size-fluid-1: clamp(1rem, 3vw, 1.5rem);
+	--size-fluid-2: clamp(1.5rem, 4vw, 2.5rem);
+	--size-fluid-3: clamp(3rem, 4vw, 4rem);
+
+	/* color */
+	--light-0: hsl(210, 17%, 98%);
+	--dark-0: hsl(214, 14%, 10%);
+	--accent-dark: hsl(210, 100%, 12%);
+	--accent-light: hsl(188, 83%, 37%);
+
+	/* gradient */
+	--grad-text: linear-gradient(30deg, var(--accent-light), var(--accent-dark));
+	--grad-pri-bg: repeating-linear-gradient(
+			135deg,
+			hsla(64, 83%, 54%, 0.05) 0px,
+			hsla(64, 83%, 54%, 0.05) 1px,
+			transparent 1px,
+			transparent 11px,
+			hsla(64, 83%, 54%, 0.05) 11px,
+			hsla(64, 83%, 54%, 0.05) 12px,
+			transparent 12px,
+			transparent 32px
+		),
+		repeating-linear-gradient(
+			180deg,
+			hsla(64, 83%, 54%, 0.05) 0px,
+			hsla(64, 83%, 54%, 0.05) 1px,
+			transparent 1px,
+			transparent 11px,
+			hsla(64, 83%, 54%, 0.05) 11px,
+			hsla(64, 83%, 54%, 0.05) 12px,
+			transparent 12px,
+			transparent 32px
+		),
+		repeating-linear-gradient(
+			90deg,
+			hsla(64, 83%, 54%, 0.05) 0px,
+			hsla(64, 83%, 54%, 0.05) 1px,
+			transparent 1px,
+			transparent 11px,
+			hsla(64, 83%, 54%, 0.05) 11px,
+			hsla(64, 83%, 54%, 0.05) 12px,
+			transparent 12px,
+			transparent 32px
+		),
+		repeating-linear-gradient(
+			225deg,
+			hsla(64, 83%, 54%, 0.05) 0px,
+			hsla(64, 83%, 54%, 0.05) 1px,
+			transparent 1px,
+			transparent 11px,
+			hsla(64, 83%, 54%, 0.05) 11px,
+			hsla(64, 83%, 54%, 0.05) 12px,
+			transparent 12px,
+			transparent 32px
+		),
+		linear-gradient(180deg, var(--accent-dark) 30%, var(--accent-light));
+
+	/* misc */
+	--pri-padding: var(--size-1);
+	--pri-transition-time: 250ms;
+}
+
+/* Core body defaults
+   ========================================================================== */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-attachment: fixed;
+	background-color: var(--dark-0);
+	background-image: var(--grad-pri-bg);
+	background-position: center;
+	background-repeat: no-repeat;
+	color: var(--light-0);
+	font-family: var(--sec-font);
+	font-size: var(--size-fluid-1);
+	position: relative;
+	scroll-behavior: smooth;
+}
+
+/* Mobile nav
+   ========================================================================== */
+.hero {
+	font-family: var(--pri-font);
+	font-weight: 900;
+	font-size: var(--size-fluid-2);
+}
+
+.hero-logo {
+	background-color: var(--dark-0);
+	padding: var(--pri-padding);
+}
+
+.nav-menu {
+	position: absolute;
+	top: var(--size-1);
+	right: var(--size-1);
+}
+
+.pri-nav {
+	background-color: var(--dark-0);
+	right: 0;
+	min-height: 100vh;
+	min-width: 100%;
+	position: absolute;
+	top: var(--size-4);
+	transform: translateX(100%);
+	transition: all var(--pri-transition-time) ease;
+	z-index: 25;
+}
+
+.nav-active {
+	transform: translateX(0%);
+}
+
+/* Date
+   ========================================================================== */
+.day-num {
+	grid-area: dayNu;
+	font-size: var(--size-fluid-3);
+}
+
+.day {
+	grid-area: day;
+	align-self: end;
+}
+
+.month-year {
+	grid-area: monYe;
+}
+
+.greeting {
+	grid-area: greet;
+	font-size: var(--size-fluid-2);
+}
+
+.date {
+	display: grid;
+	align-items: center;
+	grid-column-gap: var(--size-0);
+	padding: var(--pri-padding);
+	grid-template-columns: repeat(2, max-content);
+	grid-template-rows: auto;
+	grid-template-areas:
+		'dayNu day'
+		'dayNu monYe'
+		'greet greet';
+}
+
+/* Button & Icons
+   ========================================================================= */
+.iconV01 {
+	font-size: var(--size-2);
+}
+
+.buttonV01 {
+	color: var(--light-0);
+}
+
+/* Utility class
+   ========================================================================== */
+.hidden {
+	display: none;
+}
+
+.active {
+	display: block;
+}
+
+.grad-text {
+	-webkit-background-clip: text; /*Safari/Chrome*/
+	background-clip: text;
+	background-image: var(--grad-text);
+	color: transparent;
 }

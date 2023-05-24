@@ -1,10 +1,13 @@
 export default function navToggle() {
-	toggleIcon();
-}
+	const navIcon = document.querySelector('.nav-menu .fa-solid');
+	const priNav = document.querySelector('.pri-nav');
 
-function toggleIcon() {
-	document.querySelector('.nav-menu .fa-solid').onclick = (e) => {
-		e.target.classList.toggle('fa-bars');
-		e.target.classList.toggle('fa-xmark');
-	};
+	navIcon.addEventListener('click', () => {
+		// toggle icon
+		navIcon.classList.toggle('fa-bars');
+		navIcon.classList.toggle('fa-xmark');
+
+		// toggle nav
+		priNav.classList.toggle('nav-active');
+	});
 }
