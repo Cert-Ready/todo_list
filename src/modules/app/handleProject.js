@@ -20,7 +20,7 @@ const handleProject = (() => {
     const btnAdd = document.querySelector('.add-project-submit-btn ');
     const txtProjectName = document.querySelector('#project-title');
     const addProjectModal = document.querySelector('.formV01-add-project');
-    const closeBtn = document.querySelector('.formV01-btn-close');
+    const closeBtn = document.querySelector('.add-project-close-btn');
     let parseName = '';
 
     // display modal
