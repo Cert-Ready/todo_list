@@ -25,12 +25,27 @@ export function app() {
   });
 }
 
+function fadeInElement(element) {
+  if (!element) return;
+
+  let classToggle = 'fadeIn';
+  const animationDuration = '250';
+
+  element.classList.toggle(classToggle);
+  element.style.animationDuration = `${animationDuration}ms`;
+
+  setTimeout(() => {
+    element.classList.toggle(classToggle);
+  }, `${animationDuration}`);
+}
+
 function openAddProject(modalContainer, modal) {
   const btnAdd = document.querySelector('.add-project-submit-btn ');
   const txtProjectName = document.querySelector('#project-title');
 
   // display modal
   toggleModal(modalContainer);
+  fadeInElement(modalContainer);
 
   // create project from modal fields
   btnAdd.onclick = () => {
