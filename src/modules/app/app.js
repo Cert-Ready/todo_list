@@ -103,10 +103,21 @@ function renderProjectList() {
   let list = '';
 
   ProjectList._projectList.forEach((project) => {
-    list += `<li class= "buttonV01 buttonV02"><i class="fa-sharp fa-solid fa-trash"></i> <i class="fa-solid fa-list-check" aria-hidden="true"></i> ${project.name}</li>`;
+    list += `<li class= "buttonV01 buttonV02 project"><i class="fa-sharp fa-solid fa-trash"></i> <i class="fa-solid fa-list-check" aria-hidden="true"></i> ${project.name}</li>`;
   });
 
   projectListEl.innerHTML = list;
+
+  const projectEls = document.querySelectorAll('.project');
+
+  projectEls.forEach((el, i) => {
+    el.addEventListener('click', (e) => {
+      if (e.target.classList.contains('fa-trash')) {
+        ProjectList.deleteProject(i);
+        renderProjectList();
+      }
+    });
+  });
 }
 
 function toggleElement(element) {
