@@ -77,18 +77,23 @@ const handleProject = (() => {
     projectListEl.innerHTML = list;
 
     if (list !== '') {
-      handleDeleteProject();
+      projectActions();
     }
   }
 
-  function handleDeleteProject() {
+  function projectActions() {
     const projectEls = document.querySelectorAll('.project');
+    const projectTitleEl = document.querySelector('.project-title');
 
     projectEls.forEach((el, i) => {
       el.addEventListener('click', (e) => {
+        // delete project
         if (e.target.classList.contains('fa-trash')) {
           ProjectList.deleteProject(i);
           renderProjectList();
+        } else {
+          // render project name in DOM
+          projectTitleEl.textContent = ProjectList._projectList[i].name;
         }
       });
     });
