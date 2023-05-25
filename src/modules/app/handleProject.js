@@ -10,17 +10,6 @@ const handleProject = (() => {
   preventDefault();
 
   // event listeners
-  // toggle modal depending on area clicked
-  modalContainer.addEventListener('click', (e) => {
-    const closeBtn = document.querySelector('.formV01-btn-close');
-
-    // close modal if clicked out of bounds
-    if (e.target === modalContainer || e.target === closeBtn) {
-      toggleElement(modalContainer);
-      resetModal(modal);
-    }
-  });
-
   addProjectBtn.addEventListener('click', () => {
     // display modal
     openAddProject(modalContainer, modal);
@@ -31,6 +20,7 @@ const handleProject = (() => {
     const btnAdd = document.querySelector('.add-project-submit-btn ');
     const txtProjectName = document.querySelector('#project-title');
     const addProjectModal = document.querySelector('.formV01-add-project');
+    const closeBtn = document.querySelector('.formV01-btn-close');
     let parseName = '';
 
     // display modal
@@ -67,7 +57,13 @@ const handleProject = (() => {
       // reset & close modal
       resetModal(modal);
       toggleElement(modalContainer);
+      toggleElement(addProjectModal);
     };
+
+    closeBtn.addEventListener('click', () => {
+      toggleElement(addProjectModal);
+      toggleElement(modalContainer);
+    });
   };
 
   function renderProjectList() {
