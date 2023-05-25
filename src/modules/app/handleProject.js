@@ -1,5 +1,6 @@
 import Project from '../class/Project';
 import ProjectList from '../class/ProjectList';
+import { preventDefault, toggleElement, resetModal, fadeInElement, findProject } from './utility';
 
 const handleProject = (() => {
   const addProjectBtn = document.querySelector('.add-project');
@@ -67,7 +68,6 @@ const handleProject = (() => {
 
   function renderProjectList() {
     const projectListEl = document.querySelector('.project-list');
-
     let list = '';
 
     ProjectList._projectList.forEach((project) => {
@@ -83,6 +83,7 @@ const handleProject = (() => {
 
   function handleDeleteProject() {
     const projectEls = document.querySelectorAll('.project');
+
     projectEls.forEach((el, i) => {
       el.addEventListener('click', (e) => {
         if (e.target.classList.contains('fa-trash')) {
@@ -91,47 +92,6 @@ const handleProject = (() => {
         }
       });
     });
-  }
-
-  const findProject = (name) => {
-    let hasProject = false;
-    let index = null;
-    let element = null;
-
-    ProjectList._projectList.forEach((el, i) => {
-      if (Object.values(el).includes(name)) {
-        hasProject = true;
-        index = i;
-        element = el;
-      }
-    });
-
-    return { hasProject, index, element };
-  };
-
-  const resetModal = (modal) => {
-    return modal.reset();
-  };
-
-  const fadeInElement = (element) => {
-    let classToggle = 'fadeIn';
-    const animationDuration = '250';
-
-    element.classList.toggle(classToggle);
-    element.style.animationDuration = `${animationDuration}ms`;
-
-    setTimeout(() => {
-      element.classList.toggle(classToggle);
-    }, `${animationDuration}`);
-  };
-
-  const toggleElement = (element) => {
-    return element.classList.toggle('hidden');
-  };
-
-  function preventDefault() {
-    const modalButtons = document.querySelectorAll('.formV01-btn');
-    modalButtons.forEach((btn) => btn.addEventListener('click', (e) => e.preventDefault()));
   }
 })();
 
