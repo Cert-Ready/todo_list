@@ -307,6 +307,11 @@ ul li {
   text-align: center;
 }
 
+#add-task {
+  width: max-content;
+  margin-left: auto;
+}
+
 /* Button & Icons
    ========================================================================= */
 .iconV01 {

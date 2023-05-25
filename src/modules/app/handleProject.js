@@ -88,6 +88,7 @@ const handleProject = (() => {
   function projectActions() {
     const projectEls = document.querySelectorAll('.project');
     const projectTitleEl = document.querySelector('.project-title');
+    const addTaskEl = document.querySelector('#add-task');
 
     projectEls.forEach((el, i) => {
       el.addEventListener('click', (e) => {
@@ -98,6 +99,11 @@ const handleProject = (() => {
         } else {
           // render project name in DOM
           projectTitleEl.textContent = ProjectList._projectList[i].name;
+
+          // render add task element
+          if (addTaskEl.classList.contains('hidden')) {
+            toggleElement(addTaskEl);
+          }
         }
       });
     });
