@@ -27,8 +27,6 @@ export function app() {
 }
 
 function fadeInElement(element) {
-  if (!element) return;
-
   let classToggle = 'fadeIn';
   const animationDuration = '250';
 
@@ -62,6 +60,12 @@ function openAddProject(modalContainer, modal) {
       return;
     }
 
+    // console.log(typeof findProject(txtProjectName.value));
+    if (findProject(txtProjectName.value).hasProject) {
+      alert('Error: please enter a different project name.');
+      return;
+    }
+
     // add project to project list
     ProjectList.addProject(new Project(txtProjectName.value));
 
@@ -72,6 +76,22 @@ function openAddProject(modalContainer, modal) {
     resetModal(modal);
     toggleElement(modalContainer);
   };
+}
+
+function findProject(name) {
+  let hasProject = false;
+  let index = null;
+  let element = null;
+
+  ProjectList._projectList.forEach((el, i) => {
+    if (Object.values(el).includes(name)) {
+      hasProject = true;
+      index = i;
+      element = el;
+    }
+  });
+
+  return { hasProject, index, element };
 }
 
 function resetModal(modal) {
