@@ -31,6 +31,7 @@ const handleProject = (() => {
     const btnAdd = document.querySelector('.add-project-submit-btn ');
     const txtProjectName = document.querySelector('#project-title');
     const addProjectModal = document.querySelector('.formV01-add-project');
+    let parseName = '';
 
     // display modal
     // check if add project modal is hidden
@@ -54,8 +55,11 @@ const handleProject = (() => {
         return;
       }
 
+      // parse html as entities
+      parseName = txtProjectName.value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
       // add project to project list
-      ProjectList.addProject(new Project(txtProjectName.value));
+      ProjectList.addProject(new Project(parseName));
 
       // render project list
       renderProjectList();
