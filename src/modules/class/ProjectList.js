@@ -6,6 +6,6 @@ export default class ProjectList {
   }
 
   static deleteProject(project) {
-    this._projectList.splice(this._projectList.indexOf(project), 1);
+    this._projectList.splice(project, 1);
   }
 }
