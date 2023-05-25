@@ -21,6 +21,7 @@ export function app() {
     // close modal if clicked out of bounds
     if (e.target === modalContainer || e.target === closeBtn) {
       toggleElement(modalContainer);
+      resetModal(modal);
     }
   });
 }
@@ -42,8 +43,14 @@ function fadeInElement(element) {
 function openAddProject(modalContainer, modal) {
   const btnAdd = document.querySelector('.add-project-submit-btn ');
   const txtProjectName = document.querySelector('#project-title');
+  const addProjectModal = document.querySelector('.formV01-add-project');
 
   // display modal
+  // check if add project modal is hidden
+  if (addProjectModal.classList.contains('hidden')) {
+    toggleElement(addProjectModal);
+  }
+
   toggleElement(modalContainer);
   fadeInElement(modalContainer);
 
@@ -51,7 +58,7 @@ function openAddProject(modalContainer, modal) {
   btnAdd.onclick = () => {
     // check for empty fields
     if (txtProjectName.value === '') {
-      alert('Error please enter project name');
+      alert('Error: please enter project name');
       return;
     }
 
@@ -62,9 +69,13 @@ function openAddProject(modalContainer, modal) {
     renderProjectList();
 
     // reset & close modal
-    modal.reset();
+    resetModal(modal);
     toggleElement(modalContainer);
   };
+}
+
+function resetModal(modal) {
+  return modal.reset();
 }
 
 function renderProjectList() {
@@ -79,7 +90,7 @@ function renderProjectList() {
 }
 
 function toggleElement(element) {
-  element.classList.toggle('hidden');
+  return element.classList.toggle('hidden');
 }
 
 function preventDefault() {
