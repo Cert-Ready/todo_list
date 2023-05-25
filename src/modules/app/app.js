@@ -20,7 +20,7 @@ export function app() {
 
     // close modal if clicked out of bounds
     if (e.target === modalContainer || e.target === closeBtn) {
-      toggleModal(modalContainer);
+      toggleElement(modalContainer);
     }
   });
 }
@@ -44,7 +44,7 @@ function openAddProject(modalContainer, modal) {
   const txtProjectName = document.querySelector('#project-title');
 
   // display modal
-  toggleModal(modalContainer);
+  toggleElement(modalContainer);
   fadeInElement(modalContainer);
 
   // create project from modal fields
@@ -63,7 +63,7 @@ function openAddProject(modalContainer, modal) {
 
     // reset & close modal
     modal.reset();
-    toggleModal(modalContainer);
+    toggleElement(modalContainer);
   };
 }
 
@@ -78,8 +78,8 @@ function renderProjectList() {
   projectListEl.innerHTML = list;
 }
 
-function toggleModal(modalContainer) {
-  modalContainer.classList.toggle('hidden');
+function toggleElement(element) {
+  element.classList.toggle('hidden');
 }
 
 function preventDefault() {
