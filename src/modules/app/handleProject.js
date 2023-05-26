@@ -60,10 +60,10 @@ const handleProject = (() => {
       toggleElement(addProjectModal);
     };
 
-    closeBtn.addEventListener('click', () => {
+    closeBtn.onclick = () => {
       toggleElement(addProjectModal);
       toggleElement(modalContainer);
-    });
+    };
   };
 
   function renderProjectList() {
