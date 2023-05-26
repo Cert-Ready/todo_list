@@ -68,7 +68,7 @@ const handleProject = (() => {
     let list = '';
 
     ProjectList._projectList.forEach((project) => {
-      list += `<li class= "buttonV01 buttonV02 project"><i class="fa-sharp fa-solid fa-trash"></i> <i class="fa-solid fa-list-check" aria-hidden="true"></i> ${project.name}</li>`;
+      list += `<li class= "buttonV01 buttonV02 project"><i class="fa-sharp fa-solid fa-trash" aria-hidden="true"></i> <i class="fa-solid fa-list-check" aria-hidden="true"></i> ${project.name}</li>`;
     });
 
     projectListEl.innerHTML = list;
