@@ -1,6 +1,6 @@
 import Project from '../class/Project';
 import ProjectList from '../class/ProjectList';
-import { preventDefault, toggleElement, resetModal, fadeInElement, findProject } from './utility';
+import { preventDefault, toggleElement, resetModal, fadeInElement, findProject, parseHtml } from './utility';
 
 const handleProject = (() => {
   const addProjectBtn = document.querySelector('.add-project');
@@ -21,7 +21,6 @@ const handleProject = (() => {
     const txtProjectName = document.querySelector('#project-title');
     const addProjectModal = document.querySelector('.formV01-add-project');
     const closeBtn = document.querySelector('.add-project-close-btn');
-    let parseName = '';
 
     // display modal
     // check if add project modal is hidden
@@ -46,10 +45,8 @@ const handleProject = (() => {
       }
 
       // parse html as entities
-      parseName = txtProjectName.value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
       // add project to project list
-      ProjectList.addProject(new Project(parseName));
+      ProjectList.addProject(new Project(parseHtml(txtProjectName.value)));
 
       // render project list
       renderProjectList();

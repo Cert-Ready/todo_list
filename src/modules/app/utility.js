@@ -40,3 +40,7 @@ export function preventDefault() {
   const modalButtons = document.querySelectorAll('.formV01-btn');
   modalButtons.forEach((btn) => btn.addEventListener('click', (e) => e.preventDefault()));
 }
+
+export function parseHtml(string) {
+  return string.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
