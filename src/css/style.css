@@ -208,7 +208,7 @@ ul li {
 
 .list {
   display: grid;
-  gap: var(--size-0);
+  gap: var(--size-1);
   padding: calc(var(--pri-padding) / 2);
 }
 
@@ -272,6 +272,20 @@ ul li {
 
 .formV01 li {
   display: grid;
+  gap: var(--size-0);
+}
+
+.formV01 .radio-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-1);
+  justify-content: center;
+  align-items: center;
+}
+
+.radio-container p {
+  display: flex;
+  align-items: center;
   gap: var(--size-0);
 }
 
