@@ -2,68 +2,64 @@ import { preventDefault, findProject, parseHtml, resetModal, toggleElement, fade
 import { hasTask } from './taskActions';
 import Task from '../class/Task';
 
-const handleTask = (() => {
-  const addTaskEl = document.querySelector('#add-task');
-  const modalContainer = document.querySelector('.modal');
-  const modal = document.querySelector('.formV01');
-  const btnAdd = document.querySelector('.add-task-submit-btn ');
-  const btnClose = document.querySelector('.add-task-btn-close');
-  const addTaskModal = document.querySelector('.formV01-add-task');
+const addTaskEl = document.querySelector('#add-task');
+const modalContainer = document.querySelector('.modal');
+const modal = document.querySelector('.formV01');
+const btnAdd = document.querySelector('.add-task-submit-btn ');
+const btnClose = document.querySelector('.add-task-btn-close');
+const addTaskModal = document.querySelector('.formV01-add-task');
 
-  preventDefault();
+preventDefault();
 
-  // event listeners
-  addTaskEl.addEventListener('click', () => {
-    openAddTask(modalContainer);
-  });
+// event listeners
+addTaskEl.addEventListener('click', () => {
+  openAddTask(modalContainer);
+});
 
-  // add project
-  btnAdd.onclick = () => {
-    const projectTitleEl = document.querySelector('.project-title');
-    const taskPrio = document.querySelector('input[name="priority"]:checked').value;
-    const taskName = document.querySelector('#task-title');
-    const taskDesc = document.querySelector('#task-description');
-    const taskDate = document.querySelector('#task-date');
+// add project
+btnAdd.onclick = () => {
+  const projectTitleEl = document.querySelector('.project-title');
+  const taskPrio = document.querySelector('input[name="priority"]:checked').value;
+  const taskName = document.querySelector('#task-title');
+  const taskDesc = document.querySelector('#task-description');
+  const taskDate = document.querySelector('#task-date');
 
-    // check for empty fields description is optional
-    if (taskName.value === '') {
-      alert('Error: please enter task name');
-      return;
-    }
+  // check for empty fields description is optional
+  if (taskName.value === '') {
+    alert('Error: please enter task name');
+    return;
+  }
 
-    if (taskDate.value === '') {
-      alert('Error: please select date');
-      return;
-    }
+  if (taskDate.value === '') {
+    alert('Error: please select date');
+    return;
+  }
 
-    // push task to project
-    findProject(projectTitleEl.textContent).element.pushTask(
-      new Task(parseHtml(taskName.value), parseHtml(taskDesc.value), taskDate.value, taskPrio)
-    );
+  // push task to project
+  findProject(projectTitleEl.textContent).element.pushTask(
+    new Task(parseHtml(taskName.value), parseHtml(taskDesc.value), taskDate.value, taskPrio)
+  );
 
-    // render task
-    hasTask(projectTitleEl.textContent);
-
-    // close modal
-    resetModal(modal);
-    toggleElement(modalContainer);
-    toggleElement(addTaskModal);
-  };
+  // render task
+  hasTask(projectTitleEl.textContent);
 
   // close modal
-  btnClose.onclick = () => {
-    resetModal(modal);
-    toggleElement(modalContainer);
-    toggleElement(addTaskModal);
-  };
+  resetModal(modal);
+  toggleElement(modalContainer);
+  toggleElement(addTaskModal);
+};
 
-  // methods
-  function openAddTask(modalContainer) {
-    // open modal
-    toggleElement(modalContainer);
-    toggleElement(addTaskModal);
-    fadeInElement(modalContainer);
-  }
-})();
+// close modal
+btnClose.onclick = () => {
+  resetModal(modal);
+  toggleElement(modalContainer);
+  toggleElement(addTaskModal);
+};
 
-export default handleTask;
+// methods
+function openAddTask(modalContainer) {
+  // open modal
+  toggleElement(modalContainer);
+  toggleElement(addTaskModal);
+  fadeInElement(modalContainer);
+}
