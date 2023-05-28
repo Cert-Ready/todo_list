@@ -315,6 +315,10 @@ ul li {
   grid-template-columns: 1fr 1fr;
 }
 
+.formV01-view-task {
+  max-width: 500px;
+}
+
 /* Main content
    ========================================================================= */
 .project-title {
@@ -329,14 +333,6 @@ ul li {
 .task {
   display: flex;
   gap: var(--size-1);
-}
-
-.task-state {
-  border: 1px solid var(--light-0);
-  border-radius: 50%;
-  text-align: center;
-  max-width: var(--size-2);
-  aspect-ratio: 1 / 1;
 }
 
 .task-name {
@@ -446,10 +442,6 @@ ul li {
       'head main'
       'nav main'
       'foot foot';
-  }
-
-  .buttonV02 {
-    padding: calc(var(--pri-padding) / 2);
   }
 
   .modal {

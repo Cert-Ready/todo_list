@@ -1,4 +1,11 @@
-import { findProject, clearContent } from './utility';
+import { findProject, clearContent, toggleElement, fadeInElement } from './utility';
+const modalContainer = document.querySelector('.modal');
+const viewModal = document.querySelector('.formV01-view-task');
+const btnViewClose = document.querySelector('.view-task-btn-close');
+const viewTitleEl = document.querySelector('.view-title');
+const viewDescEl = document.querySelector('.view-desc');
+const viewDateEl = document.querySelector('.view-date');
+const viewPrioEl = document.querySelector('.view-prio');
 
 export function hasTask(project) {
   const taskListEl = document.querySelector('.task-list');
@@ -16,7 +23,7 @@ function renderTaskList(project, taskListEl) {
   findProject(project).element.taskList.forEach((task) => {
     list += `
         <li class="buttonV01 buttonV02 task flex">
-          <div class="task-state"></div>
+          <div class="task-state"><i class="fa-solid fa-circle buttonV03"></i></div>
           <div class="task-name">${task.title}</div>
           <div class="task-date">${task.date}</div>
           <div class="task-view"><i class="fa-solid fa-eye buttonV03" aria-hidden="true"></i></div>          
@@ -49,5 +56,37 @@ function handleEvents(el, i, taskListEl) {
       findProject(projectTitleEl.textContent).element.deleteTask(i);
       renderTaskList(projectTitleEl.textContent, taskListEl);
     }
+
+    // view task
+    if (e.target.classList.contains('fa-eye')) {
+      toggleViewModal(findProject(projectTitleEl.textContent).element.taskList[i]);
+    }
   });
 }
+
+function toggleViewModal(el) {
+  populateModal(el);
+  toggleElement(modalContainer);
+  toggleElement(viewModal);
+  fadeInElement(modalContainer);
+}
+
+function populateModal(el) {
+  viewTitleEl.textContent = el.title;
+  viewDescEl.textContent = el.desc;
+  viewDateEl.textContent = el.date;
+  viewPrioEl.textContent = el.priority;
+}
+
+function clearModal() {
+  viewTitleEl.textContent = '';
+  viewDescEl.textContent = '';
+  viewDateEl.textContent = '';
+  viewPrioEl.textContent = '';
+}
+
+btnViewClose.onclick = () => {
+  clearModal();
+  toggleElement(modalContainer);
+  toggleElement(viewModal);
+};
