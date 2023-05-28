@@ -21,7 +21,7 @@ const handleTask = (() => {
   btnAdd.onclick = () => {
     const projectTitleEl = document.querySelector('.project-title');
     const taskPrio = document.querySelector('input[name="priority"]:checked').value;
-    const taskName = document.querySelector('#task-name');
+    const taskName = document.querySelector('#task-title');
     const taskDesc = document.querySelector('#task-description');
     const taskDate = document.querySelector('#task-date');
 
