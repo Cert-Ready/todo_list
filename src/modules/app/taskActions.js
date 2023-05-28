@@ -26,4 +26,28 @@ function renderTaskList(project, taskListEl) {
   });
 
   taskListEl.innerHTML = list;
+
+  if (list !== '') {
+    addEvent(taskListEl);
+  }
+}
+
+function addEvent(taskListEl) {
+  const taskEls = document.querySelectorAll('.task');
+
+  taskEls.forEach((el, i) => {
+    handleEvents(el, i, taskListEl);
+  });
+}
+
+function handleEvents(el, i, taskListEl) {
+  const projectTitleEl = document.querySelector('.project-title');
+
+  el.addEventListener('click', (e) => {
+    // delete task
+    if (e.target.classList.contains('fa-trash')) {
+      findProject(projectTitleEl.textContent).element.deleteTask(i);
+      renderTaskList(projectTitleEl.textContent, taskListEl);
+    }
+  });
 }

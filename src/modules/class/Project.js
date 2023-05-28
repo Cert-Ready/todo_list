@@ -7,4 +7,8 @@ export default class Project {
   pushTask(task) {
     this.taskList.push(task);
   }
+
+  deleteTask(task) {
+    this.taskList.splice(task, 1);
+  }
 }
