@@ -1,11 +1,9 @@
 import format from 'date-fns/format';
 
-export default function date() {
-  const date = new Date();
+const date = new Date();
 
-  displayDate(date);
-  displayGreeting(date);
-}
+displayDate(date);
+displayGreeting(date);
 
 function displayDate(date) {
   document.querySelector('.day-num').textContent = format(date, 'd');
