@@ -44,3 +44,7 @@ export function preventDefault() {
 export function parseHtml(string) {
   return string.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
+
+export function clearContent(element) {
+  element.innerHTML = '';
+}

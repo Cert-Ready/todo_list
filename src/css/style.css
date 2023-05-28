@@ -326,6 +326,23 @@ ul li {
   margin-left: auto;
 }
 
+.task {
+  display: flex;
+  gap: var(--size-1);
+}
+
+.task-state {
+  border: 1px solid var(--light-0);
+  border-radius: 50%;
+  text-align: center;
+  max-width: var(--size-2);
+  aspect-ratio: 1 / 1;
+}
+
+.task-name {
+  flex-grow: 4;
+}
+
 /* Button & Icons
    ========================================================================= */
 .iconV01 {
@@ -345,12 +362,12 @@ ul li {
 }
 
 .active,
-.buttonV02:is(:hover) {
+.buttonV02:hover {
   background-color: var(--accent-light);
   color: var(--dark-0);
 }
 
-.fa-trash:is(:hover) {
+.buttonV03:hover {
   color: var(--light-0);
 }
 
@@ -432,8 +449,7 @@ ul li {
   }
 
   .buttonV02 {
-    padding: calc(var(--pri-padding) / 4);
-    border-color: transparent;
+    padding: calc(var(--pri-padding) / 2);
   }
 
   .modal {

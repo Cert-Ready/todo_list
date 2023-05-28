@@ -2,8 +2,10 @@ import './css/style.css';
 import './css/normalize.css';
 import navToggle from './modules/mobileNav/mobileNav';
 import date from './modules/date/date';
-import { app } from './modules/app/app';
+import handleProject from './modules/app/handleProject';
+import handleTask from './modules/app/handleTask';
 
 navToggle();
 date();
-app();
+handleProject;
+handleTask;
