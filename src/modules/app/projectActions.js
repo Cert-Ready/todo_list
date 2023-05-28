@@ -13,11 +13,11 @@ export function renderProjectList() {
   projectListEl.innerHTML = list;
 
   if (list !== '') {
-    handleProjectActions();
+    addEvent();
   }
 }
 
-function handleProjectActions() {
+function addEvent() {
   const projectEls = document.querySelectorAll('.project');
 
   projectEls.forEach((el, i) => {
