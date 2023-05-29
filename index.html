@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="hero">
+        <div class="hero-logo">
+          <i class="fa-solid fa-check-double iconV01" aria-hidden="true"></i>
+          &emsp;<span>to<span class="grad-text">do</span></span>
+        </div>
+      </div>
+      <div class="nav-menu"><i class="fa-solid fa-bars pri-nav-icon iconV01" aria-hidden="true"></i></div>
+      <div class="date">
+        <div class="day-num"></div>
+        <div class="day"></div>
+        <div class="month-year"></div>
+        <div class="greeting"></div>
+      </div>
+    </header>
+    <nav class="pri-nav">
+      <div class="sticky hero sticky-hero">
+        <div class="hero-logo">
+          <i class="fa-solid fa-check-double iconV01" aria-hidden="true"></i>
+          &emsp;<span>to<span class="grad-text">do</span></span>
+        </div>
+      </div>
+      <ul class="list">
+        <li class="add-project buttonV02"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Add Project</li>
+      </ul>
+      <ul class="project-list list"></ul>
+    </nav>
+    <main>
+      <h2 class="project-title"></h2>
+      <p id="add-task" class="buttonV02 hidden"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Add Task</p>
+      <ul class="task-list list"></ul>
+    </main>
+    <div class="modal hidden">
+      <form action="/" class="formV01">
+        <!-- ADD PROJECT -->
+        <ul class="formV01-add-project hidden list margin-reset">
+          <li>
+            <h2 class="margin-reset grad-text">Add project</h2>
+          </li>
+          <li>
+            <label for="project-title">Project title</label>
+            <input
+              type="text"
+              name="project-title"
+              id="project-title"
+              placeholder="Project Title..."
+              autocomplete="off"
+              maxlength="15"
+            />
+          </li>
+          <li class="btn-container">
+            <button type="submit" class="add-project-submit-btn formV01-btn formV01-btn-add">Add</button>
+            <button type="close" class="add-project-close-btn formV01-btn formV01-btn-close">Close</button>
+          </li>
+        </ul>
+
+        <!-- ADD TASK -->
+        <ul class="formV01-add-task hidden list margin-reset">
+          <li>
+            <h2 class="margin-reset grad-text">Add task</h2>
+          </li>
+          <li>
+            <label for="task-title">Task name</label>
+            <input
+              type="text"
+              name="task-title"
+              id="task-title"
+              placeholder="Task name..."
+              autocomplete="off"
+              maxlength="15"
+            />
+          </li>
+          <li>
+            <label for="desc">Description</label>
+            <textarea
+              name="desc"
+              id="task-description"
+              cols="30"
+              rows="5"
+              autocomplete="off"
+              placeholder="Description..."
+              maxlength="150"
+            ></textarea>
+          </li>
+          <li><input type="date" id="task-date" name="task-date" /></li>
+          <li>
+            <p class="margin-reset">Priority</p>
+            <div class="radio-container">
+              <p class="margin-reset">
+                <input type="radio" id="prio-h" name="priority" value="High" />
+                <label for="prio-h">High</label>
+              </p>
+              <p class="margin-reset">
+                <input type="radio" id="prio-m" name="priority" value="Medium" />
+                <label for="prio-m">Medium</label>
+              </p>
+              <p class="margin-reset">
+                <input type="radio" id="prio-l" name="priority" value="Low" checked="checked" />
+                <label for="prio-l">Low</label>
+              </p>
+            </div>
+          </li>
+          <li class="btn-container">
+            <button type="submit" class="add-task-submit-btn formV01-btn formV01-btn-add">Add</button>
+            <button type="close" class="add-task-btn-close formV01-btn formV01-btn-close">Close</button>
+          </li>
+        </ul>
+
+        <!-- VIEW TASK -->
+        <ul class="formV01-view-task hidden list margin-reset">
+          <li>
+            <h2 class="margin-reset grad-text">Details</h2>
+          </li>
+          <li>
+            <p class="margin-reset grad-text">Title:</p>
+            <p class="view-title margin-reset"></p>
+          </li>
+          <li>
+            <p class="margin-reset grad-text">Description:</p>
+            <p class="view-desc margin-reset"></p>
+          </li>
+          <li>
+            <p class="margin-reset grad-text">Date:</p>
+            <p class="view-date margin-reset"></p>
+          </li>
+          <li>
+            <p class="margin-reset grad-text">Priority:</p>
+            <p class="view-prio margin-reset"></p>
+          </li>
+          <li class="">
+            <button type="close" class="view-task-btn-close formV01-btn formV01-btn-close">Close</button>
+          </li>
+        </ul>
+      </form>
+    </div>
+    <footer>
+      <a href="https://github.com/Cert-Ready">
+        <i class="fa-brands fa-github iconV01 buttonV01" aria-hidden="true"></i>
+      </a>
+    </footer>
+    <script src="main.js"></script>
+  </body>
+</html>
