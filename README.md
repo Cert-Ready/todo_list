@@ -2,6 +2,10 @@
 
 The Odin Project - Todo List
 
+## Live Demo
+
+- [Todo List](https://cert-ready.github.io/todo_list)
+
 ## About
 
 - Todo list project following The Odin Project
