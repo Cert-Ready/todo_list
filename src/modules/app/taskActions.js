@@ -23,7 +23,7 @@ function renderTaskList(project, taskListEl) {
   findProject(project).element.taskList.forEach((task) => {
     list += `
         <li class="buttonV01 buttonV02 task flex">
-          <div class="task-state"><i class="fa-solid fa-circle buttonV03"></i></div>
+          <div><i class="fa-solid fa-circle task-state buttonV03"></i></div>
           <div class="task-name">${task.title}</div>
           <div class="task-date">${task.date}</div>
           <div class="task-view"><i class="fa-solid fa-eye buttonV03" aria-hidden="true"></i></div>          
@@ -52,7 +52,8 @@ function handleEvents(el, i, taskListEl) {
 
   el.addEventListener('click', (e) => {
     // delete task
-    if (e.target.classList.contains('fa-trash')) {
+    // delete completed task
+    if (e.target.classList.contains('fa-trash') || e.target.classList.contains('task-state')) {
       findProject(projectTitleEl.textContent).element.deleteTask(i);
       renderTaskList(projectTitleEl.textContent, taskListEl);
     }
