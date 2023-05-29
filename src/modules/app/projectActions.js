@@ -1,6 +1,7 @@
 import { hasTask } from './taskActions';
 import ProjectList from '../class/ProjectList';
 import { toggleElement } from './utility';
+import { hasLocalStorage, updateLocalStorage } from './localStorage';
 
 export function renderProjectList() {
   const projectListEl = document.querySelector('.project-list');
@@ -34,6 +35,10 @@ function handleEvents(el, i) {
     if (e.target.classList.contains('fa-trash')) {
       ProjectList.deleteProject(i);
       renderProjectList();
+
+      if (hasLocalStorage) {
+        updateLocalStorage();
+      }
     } else {
       // render project name in DOM
       projectTitleEl.textContent = ProjectList._projectList[i].name;

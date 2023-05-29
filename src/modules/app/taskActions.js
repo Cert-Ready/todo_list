@@ -1,3 +1,4 @@
+import { hasLocalStorage, updateLocalStorage } from './localStorage';
 import { findProject, clearContent, toggleElement, fadeInElement } from './utility';
 const modalContainer = document.querySelector('.modal');
 const viewModal = document.querySelector('.formV01-view-task');
@@ -56,6 +57,10 @@ function handleEvents(el, i, taskListEl) {
     if (e.target.classList.contains('fa-trash') || e.target.classList.contains('task-state')) {
       findProject(projectTitleEl.textContent).element.deleteTask(i);
       renderTaskList(projectTitleEl.textContent, taskListEl);
+
+      if (hasLocalStorage) {
+        updateLocalStorage();
+      }
     }
 
     // view task

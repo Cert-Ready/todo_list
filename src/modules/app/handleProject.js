@@ -1,5 +1,6 @@
 import Project from '../class/Project';
 import ProjectList from '../class/ProjectList';
+import { hasLocalStorage, updateLocalStorage } from './localStorage';
 import { renderProjectList } from './projectActions';
 import { preventDefault, findProject, parseHtml, resetModal, toggleElement, fadeInElement } from './utility';
 
@@ -36,6 +37,10 @@ btnAdd.onclick = () => {
   // parse html as entities
   // add project to project list
   ProjectList.addProject(new Project(parseHtml(txtProjectName.value)));
+
+  if (hasLocalStorage) {
+    updateLocalStorage();
+  }
 
   // render project list
   renderProjectList();

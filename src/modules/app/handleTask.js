@@ -1,6 +1,7 @@
 import { preventDefault, findProject, parseHtml, resetModal, toggleElement, fadeInElement } from './utility';
 import { hasTask } from './taskActions';
 import Task from '../class/Task';
+import { hasLocalStorage, updateLocalStorage } from './localStorage';
 
 const addTaskEl = document.querySelector('#add-task');
 const modalContainer = document.querySelector('.modal');
@@ -39,6 +40,10 @@ btnAdd.onclick = () => {
   findProject(projectTitleEl.textContent).element.pushTask(
     new Task(parseHtml(taskName.value), parseHtml(taskDesc.value), taskDate.value, taskPrio)
   );
+
+  if (hasLocalStorage) {
+    updateLocalStorage();
+  }
 
   // render task
   hasTask(projectTitleEl.textContent);
