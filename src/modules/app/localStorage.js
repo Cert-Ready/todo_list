@@ -48,11 +48,11 @@ function getLocalStorage() {
 window.addEventListener('load', () => {
   if ((!getLocalStorage() && hasLocalStorage) || (getLocalStorage().length === 0 && hasLocalStorage)) {
     addSampleProject();
-    renderProjectList();
   } else {
     parseLocalStorage(getLocalStorage());
-    renderProjectList();
   }
+
+  renderProjectList();
 });
 
 function parseLocalStorage(localStorage) {
