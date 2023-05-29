@@ -39,6 +39,8 @@ function handleEvents(el, i) {
       if (hasLocalStorage) {
         updateLocalStorage();
       }
+
+      clearMain(projectTitleEl, addTaskEl);
     } else {
       // render project name in DOM
       projectTitleEl.textContent = ProjectList._projectList[i].name;
@@ -51,4 +53,10 @@ function handleEvents(el, i) {
       hasTask(projectTitleEl.textContent);
     }
   });
+}
+
+function clearMain(projectTitleEl, addTaskEl) {
+  projectTitleEl.textContent = '';
+  addTaskEl.classList.add('hidden');
+  document.querySelector('.task-list').innerHTML = '';
 }
